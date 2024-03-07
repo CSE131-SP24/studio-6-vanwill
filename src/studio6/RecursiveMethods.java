@@ -12,9 +12,15 @@ public class RecursiveMethods {
 	 *         ...)
 	 */
 	public static double geometricSum(int n) {
+		if (n == 0) 
+			return 0; 
 		
-			// FIXME compute the geometric sum for the first n terms recursively
-			return 0;
+		else
+		  return geometricSum (n-1) + Math.pow(2, -n);
+			
+		
+			
+
 		
 	}
 
@@ -27,9 +33,14 @@ public class RecursiveMethods {
 	 * @return greatest common divisor of p and q
 	 */
 	public static int gcd(int p, int q) {
-		
-			// FIXME compute the gcd of p and q using recursion
-			return 0;
+		int r = p % q;
+		if (r == 0) {
+			return q;
+		}
+		else {
+			return gcd(q,r);
+		}
+			
 		
 	}
 
@@ -60,7 +71,17 @@ public class RecursiveMethods {
 	public static void circlesUponCircles(double xCenter, double yCenter, double radius,
 			double radiusMinimumDrawingThreshold) {
 		
-		// FIXME
+		if (radius > radiusMinimumDrawingThreshold) {
+			
+			StdDraw.circle(xCenter, yCenter, radius);
+			circlesUponCircles(xCenter, yCenter+radius, radius/3.0, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter, yCenter - radius, radius/3.0, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter + radius, yCenter, radius/3.0, radiusMinimumDrawingThreshold);
+			circlesUponCircles(xCenter - radius, yCenter, radius/3.0, radiusMinimumDrawingThreshold);
 	}
+	
+		if (radius <= radiusMinimumDrawingThreshold) {
+			return;
+		}
 
-}
+}}
